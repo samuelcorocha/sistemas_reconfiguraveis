@@ -1,0 +1,40 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity alu is
+	Port (
+		-- Entradas
+		a_in : in STD_LOGIC_VECTOR(7 TO 0);
+		b_in : in STD_LOGIC_VECTOR(7 TO 0);
+		c_in : in STD_LOGIC;
+		op_sel : in STD_LOGIC_VECTOR(3 TO 0);
+		bit_sel : in STD_LOGIC_VECTOR(2 TO 0);
+		-- Saídas
+		r_out : out STD_LOGIC_VECTOR(7 TO 0);
+		c_out : out STD_LOGIC;
+		dc_out : out STD_LOGIC;
+		z_out : out STD_LOGIC;
+	);
+end alu;
+
+architecture arch of alu is
+    signal temp_result : STD_LOGIC_VECTOR(7 downto 0);
+begin
+    temp_result <= a_in XOR b_in when op_sel = "0000" else -- XOR
+                   a_in OR b_in when op_sel = "0001" else  -- OR
+                   a_in AND b_in when op_sel = "0010" else -- AND
+                   (others => '0') when op_sel = "0011" else -- CLR
+                   std_logic_vector(unsigned(a_in) + unsigned(b_in)) when op_sel = "0100" else  -- ADD
+                   std_logic_vector(unsigned(a_in) - unsigned(b_in)) when op_sel = "0101" else  -- SUB
+                   std_logic_vector(unsigned(a_in) + 1) when op_sel = "0110" else  -- INC
+                   std_logic_vector(unsigned(a_in) - 1) when op_sel = "0111" else  -- DEC
+                   when op_sel = "1000" else -- PASS_A
+                   when op_sel = "1001" else -- PASS_B
+                   NOT a_in when op_sel = "1010" else -- COM (Complemento)
+                   when op_sel = "1011" else -- SWAP
+                   when op_sel = "1100" else -- BS
+                   when op_sel = "1101" else -- BC
+                   when op_sel = "1110" else -- RR
+                   when op_sel = "1111" else -- RL
+end arch;
