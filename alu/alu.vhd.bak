@@ -36,12 +36,14 @@ begin
 					   when "1011", -- SWAP
 					   when "1100", -- BS
 					   when "1101", -- BC
-					   when "1110", -- RR
-					   when "1111"; -- RL
+					   c_in & a_in(7 downto 1) when "1110", -- RR
+					   a_in(6 downto 0) & c_in when "1111"; -- RL
                    
 	r_out <= temp_result when (op_sel /= "1100" and op_sel /= "1101") else
              temp_result when (op_sel = "1100" and temp_result(to_integer(unsigned(bit_sel))) = '1') else
              temp_result when (op_sel = "1101" and temp_result(to_integer(unsigned(bit_sel))) = '0') else temp_result;
 
-    z_out <= '1' when temp_result = "00000000" else '0';
+    z_out <= '1' when temp_result = "00000000" else
+			 a_in(to_integer(unsigned(bit_sel))) when op_sel = "1100" or op_sel = "1101" else
+			 '0';
 end arch;
