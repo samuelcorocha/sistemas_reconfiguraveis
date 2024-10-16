@@ -5,7 +5,6 @@ USE ieee.std_logic_unsigned.all;
 
 
 
-
 entity alu is
 	Port (
 		-- Entradas
@@ -31,6 +30,26 @@ architecture arch of alu is
     CONSTANT zero : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
     CONSTANT one : STD_LOGIC_VECTOR(7 DOWNTO 0) := "11111111";
 begin
+	bit_BC_BS <= a_in(to_integer(unsigned(bit_sel)))
+	with op_sel SELECT
+		dc_vector <= '0' & a_in(3 DOWNTO 0) + b_in(3 DOWNTO 0) WHEN "0110", 
+		'0' & a_in(3 DOWNTO 0) - b_in(3 DOWNTO 0) WHEN "0111",
+		"00000" WHEN OTHERS;
+		
+	with bit_sel SELECT --Tabela das operações BC BS 
+		vector_BC_BS <=
+			"00000001" WHEN "000",
+			"00000010" WHEN "001",
+			"00000100" WHEN "010",
+			"00001000" WHEN "011",
+			"00010000" WHEN "100",
+			"00100000" WHEN "101",
+			"01000000" WHEN "110",
+			"10000000" WHEN "111";
+			
+			
+			
+			
     with op_sel select
 		temp_result <= a_in XOR b_in when "0000", -- XOR
 					   a_in OR b_in when "0001",  -- OR
@@ -43,17 +62,28 @@ begin
 					   a_in when "1000", -- PASS_A
 					   b_in when "1001", -- PASS_B
 					   NOT a_in when "1010", -- COM (Complemento)
-					   when "1011", -- SWAP
-					   when "1100", -- BS
-					   when "1101", -- BC
+					   a_in(3 DOWNTO 0) & a_in(7 DOWNTO 4) when "1011", -- SWAP
+					   vector_BC_BS OR a_in when "1100", -- BS
+					   NOT vector_BC_BS OR a_in when "1101", -- BC
 					   c_in & a_in(7 downto 1) when "1110", -- RR
 					   a_in(6 downto 0) & c_in when "1111"; -- RL
+					   
+    
+    with op_sel SELECT			-- Carry-out
+		c_out <= result(8) WHEN "",
+		NOT result(8) WHEN "",
+		a_in(0) WHEN "",
+		a_in(7) WHEN "",
+		'0' WHEN OTHERS;
+    
+    dc_out <= dc_vector(4) WHEN (op_sel = "0100" OR op_sel = "0101" OR op_sel = "0110" OR op_sel = "0111") ELSE '0'; -- Digit Carry-out
+    
                    
 	r_out <= temp_result when (op_sel /= "1100" and op_sel /= "1101") else
              temp_result when (op_sel = "1100" and temp_result(to_integer(unsigned(bit_sel))) = '1') else
              temp_result when (op_sel = "1101" and temp_result(to_integer(unsigned(bit_sel))) = '0') else temp_result;
 
-    z_out <= '1' when temp_result = "00000000" else
-			 a_in(to_integer(unsigned(bit_sel))) when op_sel = "1100" or op_sel = "1101" else
-			 '0';
+    z_out <= bit_BC_BS when op_sel = "1100" or op_sel = "1101" ELSE
+				'1' when temp_result = "00000000" else
+				'0';
 end arch;
