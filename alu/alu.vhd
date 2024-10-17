@@ -70,10 +70,10 @@ begin
 					   
     
     with op_sel SELECT			-- Carry-out
-		c_out <= result(8) WHEN "",
-		NOT result(8) WHEN "",
-		a_in(0) WHEN "",
-		a_in(7) WHEN "",
+		c_out <= result(8) WHEN "0100" and unsigned(a_in) + unsigned(b_in) > 255, -- Overflow
+		NOT result(8) WHEN "0101" and unsigned(a_in) < unsigned(b_in), -- Emprestimo
+		a_in(0) WHEN "1110",
+		a_in(7) WHEN "1111",
 		'0' WHEN OTHERS;
     
     dc_out <= dc_vector(4) WHEN (op_sel = "0100" OR op_sel = "0101" OR op_sel = "0110" OR op_sel = "0111") ELSE '0'; -- Digit Carry-out
