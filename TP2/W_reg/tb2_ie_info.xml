@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<!--Created by Liquid XML 2008 (www.liquid-technologies.com) for ALTERA CORPORATION-->
+<ProgramExecution xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+	<QuartusExecution>
+		<AddressBits>32</AddressBits>
+		<ApplicationError>
+		<CommandLine/>		<ErrorMessage></ErrorMessage>
+		<Line>0</Line>
+		<SourceFile>unknown</SourceFile>
+		<StackTrace>
+	  0xd2157b8: resr_rpw + 0x157b8 (resr_rpw_dll_get_template_classes + 0xb658)
+	   0xf0c8bc: GCL_AFC + 0xc8bc (?OnWndMsg@AFC_VIEW@@EAEHIIJPAJ@Z + 0x3c)
+	 0x5647ba48: mfc90 + 0x5ba48
+	 0x5647a63c: mfc90 + 0x5a63c
+	 0x5647a8c8: mfc90 + 0x5a8c8
+	 0x564785b2: mfc90 + 0x585b2
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x750f39d9: USER32 + 0x239d9 (CallWindowProcW + 0x199)
+	 0x750fd94e: USER32 + 0x2d94e (GetPropW + 0xfe)
+	 0x7742916c: ntdll + 0x7916c (KiUserCallbackDispatcher + 0x4c)
+	 0x5647be76: mfc90 + 0x5be76
+	   0xf09185: GCL_AFC + 0x9185 (?OnWndMsg@AFC_CHILD_FRAME@@UAEHIIJPAJ@Z + 0x75)
+	 0x5647ba48: mfc90 + 0x5ba48
+	 0x5647a63c: mfc90 + 0x5a63c
+	 0x5647a8c8: mfc90 + 0x5a8c8
+	 0x564785b2: mfc90 + 0x585b2
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x750f39d9: USER32 + 0x239d9 (CallWindowProcW + 0x199)
+	 0x750fd94e: USER32 + 0x2d94e (GetPropW + 0xfe)
+	 0x7742916c: ntdll + 0x7916c (KiUserCallbackDispatcher + 0x4c)
+	 0x75146348: USER32 + 0x76348 (Ordinal2001 + 0x25f8)
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x7511e735: USER32 + 0x4e735 (SetMenu + 0x145)
+	 0x7511f21a: USER32 + 0x4f21a (CallWindowProcA + 0x1a)
+	 0x5647b147: mfc90 + 0x5b147
+	 0x5647a70b: mfc90 + 0x5a70b
+	 0x5647ba48: mfc90 + 0x5ba48
+	 0x5647a63c: mfc90 + 0x5a63c
+	 0x5647a8c8: mfc90 + 0x5a8c8
+	 0x564785b2: mfc90 + 0x585b2
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x750f39d9: USER32 + 0x239d9 (CallWindowProcW + 0x199)
+	 0x750fd94e: USER32 + 0x2d94e (GetPropW + 0xfe)
+	 0x7742916c: ntdll + 0x7916c (KiUserCallbackDispatcher + 0x4c)
+	 0x75147d0a: USER32 + 0x77d0a (DefFrameProcA + 0x1a)
+	 0x56484bc4: mfc90 + 0x64bc4
+	 0x4c0d1a36: AOT803AS + 0xd1a36 (SECMDIFrameWnd::DefWindowProcA + 0x76)
+	 0x5647a70b: mfc90 + 0x5a70b
+	   0x4162a0: quartus + 0x162a0 (Pjm_Unload + 0x71a0)
+	 0x4c0d1c3a: AOT803AS + 0xd1c3a (SECMDIFrameWnd::WindowProc + 0x8a)
+	 0x5647a63c: mfc90 + 0x5a63c
+	 0x5647a8c8: mfc90 + 0x5a8c8
+	 0x564785b2: mfc90 + 0x585b2
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x7511e735: USER32 + 0x4e735 (SetMenu + 0x145)
+	 0x7511f21a: USER32 + 0x4f21a (CallWindowProcA + 0x1a)
+	   0x40acf3: quartus + 0xacf3
+	   0x413610: quartus + 0x13610 (Pjm_Unload + 0x4510)
+	   0x416c30: quartus + 0x16c30 (Pjm_Unload + 0x7b30)
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x750f39d9: USER32 + 0x239d9 (CallWindowProcW + 0x199)
+	 0x750fd94e: USER32 + 0x2d94e (GetPropW + 0xfe)
+	 0x7742916c: ntdll + 0x7916c (KiUserCallbackDispatcher + 0x4c)
+	 0x75166d56: USER32 + 0x96d56 (Ordinal2523 + 0x7b6)
+	 0x7516797d: USER32 + 0x9797d (CreateWindowExA + 0xcd)
+	 0x750f73f8: USER32 + 0x273f8 (IsWindow + 0x168)
+	 0x75145e10: USER32 + 0x75e10 (Ordinal2001 + 0x20c0)
+	 0x75147d0a: USER32 + 0x77d0a (DefFrameProcA + 0x1a)
+	 0x56484bc4: mfc90 + 0x64bc4
+	 0x4c0d1a36: AOT803AS + 0xd1a36 (SECMDIFrameWnd::DefWindowProcA + 0x76)
+	 0x5647a70b: mfc90 + 0x5a70b
+	 0x4c0d437a: AOT803AS + 0xd437a (SECMDIFrameWnd::OnActivate + 0xa)
+	   0xf22d36: GCL_AFC + 0x22d36 (?OnActivate@AFC_MDI_FRAME@@QAEXIPAVCWnd@@H@Z + 0x96)
+	 0x5647beb2: mfc90 + 0x5beb2
+	 0x750f0afb: USER32 + 0x20afb (MapWindowPoints + 0x147b)
+	 0x750f0c2f: USER32 + 0x20c2f (MapWindowPoints + 0x15af)
+	 0x4c0d1a36: AOT803AS + 0xd1a36 (SECMDIFrameWnd::DefWindowProcA + 0x76)
+	   0x4162a0: quartus + 0x162a0 (Pjm_Unload + 0x71a0)
+	 0x74fe1d6b: win32u + 0x1d6b (NtUserSetActiveWindow + 0xb)
+	 0x7512a280: USER32 + 0x5a280 (EndDialog + 0x140)
+	 0x56497b30: mfc90 + 0x77b30
+	 0x56497cdd: mfc90 + 0x77cdd
+	 0x564a9874: mfc90 + 0x89874
+	 0x5649a003: mfc90 + 0x7a003
+	 0x5647c2d2: mfc90 + 0x5c2d2
+	 0x5647bad5: mfc90 + 0x5bad5
+	   0xf0c8bc: GCL_AFC + 0xc8bc (?OnWndMsg@AFC_VIEW@@EAEHIIJPAJ@Z + 0x3c)
+	 0x5647ba48: mfc90 + 0x5ba48
+	 0x5647a63c: mfc90 + 0x5a63c
+	 0x5647a8c8: mfc90 + 0x5a8c8
+	 0x564785b2: mfc90 + 0x585b2
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x750f3371: USER32 + 0x23371 (MsgWaitForMultipleObjectsEx + 0x8d1)
+	 0x751098e7: USER32 + 0x398e7 (SetWindowsHookExAW + 0x197)
+	 0x750f2a35: USER32 + 0x22a35 (SendMessageW + 0x45)
+	 0x7511b6fd: USER32 + 0x4b6fd (LoadCursorFromFileW + 0x1efd)
+	 0x7511b3d7: USER32 + 0x4b3d7 (LoadCursorFromFileW + 0x1bd7)
+	 0x7511a891: USER32 + 0x4a891 (LoadCursorFromFileW + 0x1091)
+	 0x75119d01: USER32 + 0x49d01 (LoadCursorFromFileW + 0x501)
+	 0x75103162: USER32 + 0x33162 (Ordinal2713 + 0x6b2)
+	 0x750f3f55: USER32 + 0x23f55 (CallWindowProcW + 0x715)
+	 0x7511e735: USER32 + 0x4e735 (SetMenu + 0x145)
+	 0x7511f21a: USER32 + 0x4f21a (CallWindowProcA + 0x1a)
+		</StackTrace>
+		<Subsystem>unknown</Subsystem>
+	</ApplicationError>
+	<Compilation>
+			<CompileID>0</CompileID>
+			<DeviceFamily/>
+			<IncrementalCompilation/>
+			<TopLevelEntityName/>
+		</Compilation>
+		<DateInvoked>2024/11/08 20:28:38</DateInvoked>
+		<ElapsedTime>177657</ElapsedTime>
+		<IP>26.239.170.255,25.54.14.125,192.168.18.30</IP>
+		<IsInternal>false</IsInternal>
+		<IsQt>false</IsQt>
+		<License>
+			<Edition>Web Edition</Edition>
+			<LicenseHostID/>
+		</License>
+		<Machine>
+			<CPUCountLogical>20</CPUCountLogical>
+			<CPUCountPhysical>1</CPUCountPhysical>
+			<CPUSpeed>2688</CPUSpeed>
+			<Hostname>samuelcorochaPC</Hostname>
+			<NIC>
+				<Address>0ccc47e2765e</Address>
+			</NIC>
+			<NIC>
+				<Address>0093375cee63</Address>
+			</NIC>
+			<NIC>
+				<Address>22e04ca49ad0</Address>
+			</NIC>
+			<NIC>
+				<Address>7a7919360e7d</Address>
+			</NIC>
+			<NIC>
+				<Address>02506c9ae552</Address>
+			</NIC>
+			<NIC>
+				<Address>0093375cee5f</Address>
+			</NIC>
+			<NIC>
+				<Address>0093375cee60</Address>
+			</NIC>
+			<NIC>
+				<Address>0293375cee5f</Address>
+			</NIC>
+			<OS>Windows Vista</OS>
+			<OSAddressBits>64</OSAddressBits>
+			<OSVersion>6.2</OSVersion>
+			<Platform>windows</Platform>
+			<ScreenResolution>unknown</ScreenResolution>
+			<TotalPhysicalRAM>4095</TotalPhysicalRAM>
+			<TotalVirtualRAM>0</TotalVirtualRAM>
+		</Machine>
+		<Name>quartus</Name>
+		<PeakMemoryUsed>0</PeakMemoryUsed>
+		<ProjectRevision>
+			<ProjectName/>
+			<Revision/>
+		</ProjectRevision>
+		<QuartusInstallation>
+			<InstallationID>14071518885470.172437954217488</InstallationID>
+			<Version>
+				<Build>350</Build>
+				<BuildSite>SJ</BuildSite>
+				<BuildSuffix/>
+				<Edition>Web Edition</Edition>
+				<ServicePack>2</ServicePack>
+				<VersionNumber>9.1</VersionNumber>
+			</Version>
+		</QuartusInstallation>
+		<QuartusUser>
+			<AlteraUserName/>
+			<FAEContactName/>
+			<TalkbackStatus>
+				<DateSet/>
+				<TalkbackOn>true</TalkbackOn>
+			</TalkbackStatus>
+			<UserID>14071518885470.17249758152874</UserID>
+			<UserName>samuelcorocha</UserName>
+		</QuartusUser>
+	</QuartusExecution>
+	<SchemaVersion>schema_2009-08-20</SchemaVersion>
+</ProgramExecution>
+

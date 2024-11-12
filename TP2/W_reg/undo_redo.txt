@@ -1,0 +1,11 @@
+WED
+
+	Undo Commands
+	     1.	Change Time Bars
+	     2.	Change Time Bars
+	     3.	Change Time Bars
+	     4.	Change Time Bars
+	     5.	Move Time Bar
+			 ***  *** 
+
+

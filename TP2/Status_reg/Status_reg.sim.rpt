@@ -1,0 +1,241 @@
+Simulator report for Status_reg
+Sun Nov 10 23:33:36 2024
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Simulator Summary
+  3. Simulator Settings
+  4. Simulation Waveforms
+  5. Coverage Summary
+  6. Complete 1/0-Value Coverage
+  7. Missing 1-Value Coverage
+  8. Missing 0-Value Coverage
+  9. Simulator INI Usage
+ 10. Simulator Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------+
+; Simulator Summary                          ;
++-----------------------------+--------------+
+; Type                        ; Value        ;
++-----------------------------+--------------+
+; Simulation Start Time       ; 0 ps         ;
+; Simulation End Time         ; 1.0 us       ;
+; Simulation Netlist Size     ; 66 nodes     ;
+; Simulation Coverage         ;      50.00 % ;
+; Total Number of Transitions ; 154          ;
+; Simulation Breakpoints      ; 0            ;
+; Family                      ; Cyclone II   ;
++-----------------------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                          ;
++--------------------------------------------------------------------------------------------+----------------+---------------+
+; Option                                                                                     ; Setting        ; Default Value ;
++--------------------------------------------------------------------------------------------+----------------+---------------+
+; Simulation mode                                                                            ; Functional     ; Timing        ;
+; Start time                                                                                 ; 0 ns           ; 0 ns          ;
+; Simulation results format                                                                  ; CVWF           ;               ;
+; Vector input source                                                                        ; Status_reg.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On             ; On            ;
+; Check outputs                                                                              ; Off            ; Off           ;
+; Report simulation coverage                                                                 ; On             ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On             ; On            ;
+; Display missing 1-value coverage report                                                    ; On             ; On            ;
+; Display missing 0-value coverage report                                                    ; On             ; On            ;
+; Detect setup and hold time violations                                                      ; Off            ; Off           ;
+; Detect glitches                                                                            ; Off            ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off            ; Off           ;
+; Generate Signal Activity File                                                              ; Off            ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off            ; Off           ;
+; Group bus channels in simulation results                                                   ; Off            ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On             ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE     ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off            ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off            ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto           ; Auto          ;
++--------------------------------------------------------------------------------------------+----------------+---------------+
+
+
++----------------------+
+; Simulation Waveforms ;
++----------------------+
+Waveform report data cannot be output to ASCII.
+Please use Quartus II to view the waveform report data.
+
+
++--------------------------------------------------------------------+
+; Coverage Summary                                                   ;
++-----------------------------------------------------+--------------+
+; Type                                                ; Value        ;
++-----------------------------------------------------+--------------+
+; Total coverage as a percentage                      ;      50.00 % ;
+; Total nodes checked                                 ; 66           ;
+; Total output ports checked                          ; 64           ;
+; Total output ports with complete 1/0-value coverage ; 32           ;
+; Total output ports with no 1/0-value coverage       ; 16           ;
+; Total output ports with no 1-value coverage         ; 24           ;
+; Total output ports with no 0-value coverage         ; 24           ;
++-----------------------------------------------------+--------------+
+
+
+The following table displays output ports that toggle between 1 and 0 during simulation.
++--------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                              ;
++---------------------------+---------------------------+------------------+
+; Node Name                 ; Output Port Name          ; Output Port Type ;
++---------------------------+---------------------------+------------------+
+; |Status_reg|process_0~0   ; |Status_reg|process_0~0   ; out0             ;
+; |Status_reg|status_reg~0  ; |Status_reg|status_reg~0  ; out              ;
+; |Status_reg|status_reg~1  ; |Status_reg|status_reg~1  ; out              ;
+; |Status_reg|status_reg~2  ; |Status_reg|status_reg~2  ; out              ;
+; |Status_reg|status_reg~3  ; |Status_reg|status_reg~3  ; out              ;
+; |Status_reg|status_reg~4  ; |Status_reg|status_reg~4  ; out              ;
+; |Status_reg|status_reg~5  ; |Status_reg|status_reg~5  ; out              ;
+; |Status_reg|status_reg[7] ; |Status_reg|status_reg[7] ; regout           ;
+; |Status_reg|status_reg[6] ; |Status_reg|status_reg[6] ; regout           ;
+; |Status_reg|status_reg[3] ; |Status_reg|status_reg[3] ; regout           ;
+; |Status_reg|status_reg[2] ; |Status_reg|status_reg[2] ; regout           ;
+; |Status_reg|dbus_out~8    ; |Status_reg|dbus_out~8    ; out0             ;
+; |Status_reg|nrst          ; |Status_reg|nrst          ; out              ;
+; |Status_reg|clk_in        ; |Status_reg|clk_in        ; out              ;
+; |Status_reg|abus_in[0]    ; |Status_reg|abus_in[0]    ; out              ;
+; |Status_reg|abus_in[1]    ; |Status_reg|abus_in[1]    ; out              ;
+; |Status_reg|dbus_in[0]    ; |Status_reg|dbus_in[0]    ; out              ;
+; |Status_reg|dbus_in[1]    ; |Status_reg|dbus_in[1]    ; out              ;
+; |Status_reg|dbus_in[2]    ; |Status_reg|dbus_in[2]    ; out              ;
+; |Status_reg|dbus_in[3]    ; |Status_reg|dbus_in[3]    ; out              ;
+; |Status_reg|dbus_in[4]    ; |Status_reg|dbus_in[4]    ; out              ;
+; |Status_reg|dbus_in[5]    ; |Status_reg|dbus_in[5]    ; out              ;
+; |Status_reg|dbus_in[6]    ; |Status_reg|dbus_in[6]    ; out              ;
+; |Status_reg|dbus_in[7]    ; |Status_reg|dbus_in[7]    ; out              ;
+; |Status_reg|wr_en         ; |Status_reg|wr_en         ; out              ;
+; |Status_reg|rd_en         ; |Status_reg|rd_en         ; out              ;
+; |Status_reg|z_in          ; |Status_reg|z_in          ; out              ;
+; |Status_reg|z_wr_en       ; |Status_reg|z_wr_en       ; out              ;
+; |Status_reg|irp_out       ; |Status_reg|irp_out       ; pin_out          ;
+; |Status_reg|rp_out[1]     ; |Status_reg|rp_out[1]     ; pin_out          ;
+; |Status_reg|z_out         ; |Status_reg|z_out         ; pin_out          ;
+; |Status_reg|Equal0~0      ; |Status_reg|Equal0~0      ; out0             ;
++---------------------------+---------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 1 during simulation.
++--------------------------------------------------------------------------+
+; Missing 1-Value Coverage                                                 ;
++---------------------------+---------------------------+------------------+
+; Node Name                 ; Output Port Name          ; Output Port Type ;
++---------------------------+---------------------------+------------------+
+; |Status_reg|dbus_out[1]~0 ; |Status_reg|dbus_out[1]~0 ; out              ;
+; |Status_reg|dbus_out[0]~1 ; |Status_reg|dbus_out[0]~1 ; out              ;
+; |Status_reg|status_reg[5] ; |Status_reg|status_reg[5] ; regout           ;
+; |Status_reg|status_reg[4] ; |Status_reg|status_reg[4] ; regout           ;
+; |Status_reg|status_reg[1] ; |Status_reg|status_reg[1] ; regout           ;
+; |Status_reg|status_reg[0] ; |Status_reg|status_reg[0] ; regout           ;
+; |Status_reg|dbus_out[4]~4 ; |Status_reg|dbus_out[4]~4 ; out              ;
+; |Status_reg|dbus_out[5]~5 ; |Status_reg|dbus_out[5]~5 ; out              ;
+; |Status_reg|abus_in[2]    ; |Status_reg|abus_in[2]    ; out              ;
+; |Status_reg|abus_in[3]    ; |Status_reg|abus_in[3]    ; out              ;
+; |Status_reg|abus_in[4]    ; |Status_reg|abus_in[4]    ; out              ;
+; |Status_reg|abus_in[5]    ; |Status_reg|abus_in[5]    ; out              ;
+; |Status_reg|abus_in[6]    ; |Status_reg|abus_in[6]    ; out              ;
+; |Status_reg|dc_in         ; |Status_reg|dc_in         ; out              ;
+; |Status_reg|c_in          ; |Status_reg|c_in          ; out              ;
+; |Status_reg|dc_wr_en      ; |Status_reg|dc_wr_en      ; out              ;
+; |Status_reg|c_wr_en       ; |Status_reg|c_wr_en       ; out              ;
+; |Status_reg|dbus_out[0]   ; |Status_reg|dbus_out[0]   ; pin_out          ;
+; |Status_reg|dbus_out[1]   ; |Status_reg|dbus_out[1]   ; pin_out          ;
+; |Status_reg|dbus_out[4]   ; |Status_reg|dbus_out[4]   ; pin_out          ;
+; |Status_reg|dbus_out[5]   ; |Status_reg|dbus_out[5]   ; pin_out          ;
+; |Status_reg|rp_out[0]     ; |Status_reg|rp_out[0]     ; pin_out          ;
+; |Status_reg|dc_out        ; |Status_reg|dc_out        ; pin_out          ;
+; |Status_reg|c_out         ; |Status_reg|c_out         ; pin_out          ;
++---------------------------+---------------------------+------------------+
+
+
+The following table displays output ports that do not toggle to 0 during simulation.
++--------------------------------------------------------------------------+
+; Missing 0-Value Coverage                                                 ;
++---------------------------+---------------------------+------------------+
+; Node Name                 ; Output Port Name          ; Output Port Type ;
++---------------------------+---------------------------+------------------+
+; |Status_reg|status_reg[5] ; |Status_reg|status_reg[5] ; regout           ;
+; |Status_reg|status_reg[4] ; |Status_reg|status_reg[4] ; regout           ;
+; |Status_reg|status_reg[1] ; |Status_reg|status_reg[1] ; regout           ;
+; |Status_reg|status_reg[0] ; |Status_reg|status_reg[0] ; regout           ;
+; |Status_reg|dbus_out[2]~2 ; |Status_reg|dbus_out[2]~2 ; out              ;
+; |Status_reg|dbus_out[3]~3 ; |Status_reg|dbus_out[3]~3 ; out              ;
+; |Status_reg|dbus_out[6]~6 ; |Status_reg|dbus_out[6]~6 ; out              ;
+; |Status_reg|dbus_out[7]~7 ; |Status_reg|dbus_out[7]~7 ; out              ;
+; |Status_reg|abus_in[2]    ; |Status_reg|abus_in[2]    ; out              ;
+; |Status_reg|abus_in[3]    ; |Status_reg|abus_in[3]    ; out              ;
+; |Status_reg|abus_in[4]    ; |Status_reg|abus_in[4]    ; out              ;
+; |Status_reg|abus_in[5]    ; |Status_reg|abus_in[5]    ; out              ;
+; |Status_reg|abus_in[6]    ; |Status_reg|abus_in[6]    ; out              ;
+; |Status_reg|dc_in         ; |Status_reg|dc_in         ; out              ;
+; |Status_reg|c_in          ; |Status_reg|c_in          ; out              ;
+; |Status_reg|dc_wr_en      ; |Status_reg|dc_wr_en      ; out              ;
+; |Status_reg|c_wr_en       ; |Status_reg|c_wr_en       ; out              ;
+; |Status_reg|dbus_out[2]   ; |Status_reg|dbus_out[2]   ; pin_out          ;
+; |Status_reg|dbus_out[3]   ; |Status_reg|dbus_out[3]   ; pin_out          ;
+; |Status_reg|dbus_out[6]   ; |Status_reg|dbus_out[6]   ; pin_out          ;
+; |Status_reg|dbus_out[7]   ; |Status_reg|dbus_out[7]   ; pin_out          ;
+; |Status_reg|rp_out[0]     ; |Status_reg|rp_out[0]     ; pin_out          ;
+; |Status_reg|dc_out        ; |Status_reg|dc_out        ; pin_out          ;
+; |Status_reg|c_out         ; |Status_reg|c_out         ; pin_out          ;
++---------------------------+---------------------------+------------------+
+
+
++---------------------+
+; Simulator INI Usage ;
++--------+------------+
+; Option ; Usage      ;
++--------+------------+
+
+
++--------------------+
+; Simulator Messages ;
++--------------------+
+Info: *******************************************************************
+Info: Running Quartus II Simulator
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Sun Nov 10 23:33:36 2024
+Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Status_reg -c Status_reg
+Info: Using vector source file "D:/Users/samuelcorocha/Documents/PUC/SISTEMAS RECONFIGURÁVEIS/Trabalhos/TP2/Status_reg/Status_reg.vwf"
+Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
+    Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
+Info: Simulation partitioned into 1 sub-simulations
+Info: Simulation coverage is      50.00 %
+Info: Number of transitions in simulation is 154
+Info: Quartus II Simulator was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 147 megabytes
+    Info: Processing ended: Sun Nov 10 23:33:36 2024
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+
