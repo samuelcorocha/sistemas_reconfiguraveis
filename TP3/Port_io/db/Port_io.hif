@@ -31,7 +31,7 @@ ON
 # case_insensitive
 # source_file
 port_io.vhd
-55306dc8264f8b4538fc94fc2f682
+fb70ad9fd5228ab49816f35ba32d1ebd
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -42,6 +42,24 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
+}
+# user_parameter {
+port_addr
+000000000
+PARAMETER_UNSIGNED_BIN
+DEF
+tris_addr
+000000001
+PARAMETER_UNSIGNED_BIN
+DEF
+alt_port_addr
+000000000
+PARAMETER_UNSIGNED_BIN
+DEF
+alt_tris_addr
+000000001
+PARAMETER_UNSIGNED_BIN
+DEF
 }
 # hierarchies {
 |
