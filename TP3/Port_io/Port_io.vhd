@@ -51,7 +51,7 @@ begin
             if abus_in = tris_addr or abus_in = alt_tris_addr then
                 dbus_out <= tris_reg;
             elsif abus_in = port_addr or abus_in = alt_port_addr then
-                latch <= port_io; -- Captura o valor da porta
+                latch <= port_io;
                 dbus_out <= latch;
             else
                 dbus_out <= (others => 'Z');

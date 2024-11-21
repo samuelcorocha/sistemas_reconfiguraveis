@@ -5,41 +5,38 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity Port_io is
     generic (
-        port_addr     : STD_LOGIC_VECTOR(8 downto 0) := "000000000"; -- Endereço principal para port_reg
-        tris_addr     : STD_LOGIC_VECTOR(8 downto 0) := "000000001"; -- Endereço principal para tris_reg
-        alt_port_addr : STD_LOGIC_VECTOR(8 downto 0) := "000000000"; -- Igual a port_addr por padrão
-        alt_tris_addr : STD_LOGIC_VECTOR(8 downto 0) := "000000001"  -- Igual a tris_addr por padrão
+        port_addr     : STD_LOGIC_VECTOR(8 downto 0) := "000000000"; -- ADDRESS TO port_reg
+        tris_addr     : STD_LOGIC_VECTOR(8 downto 0) := "000000001"; -- ADDRESS TO tris_reg
+        alt_port_addr : STD_LOGIC_VECTOR(8 downto 0) := "000000000"; -- COPYING port_reg
+        alt_tris_addr : STD_LOGIC_VECTOR(8 downto 0) := "000000001"  -- COPYING tris_reg
     );
     port (
-        nrst       : in  STD_LOGIC;                      -- Reset assíncrono
-        clk_in     : in  STD_LOGIC;                      -- Clock para operações síncronas
-        abus_in    : in  STD_LOGIC_VECTOR(8 downto 0);   -- Endereçamento para os registradores
-        dbus_in    : in  STD_LOGIC_VECTOR(7 downto 0);   -- Dados de entrada para escrita
-        wr_en      : in  STD_LOGIC;                      -- Habilitação de escrita
-        rd_en      : in  STD_LOGIC;                      -- Habilitação de leitura
-        dbus_out   : out STD_LOGIC_VECTOR(7 downto 0);   -- Dados de saída para leitura
-        port_io    : inout STD_LOGIC_VECTOR(7 downto 0)  -- Porta bidirecional
+        nrst       : in  STD_LOGIC;                      -- RESET
+        clk_in     : in  STD_LOGIC;                      -- CLOCK
+        abus_in    : in  STD_LOGIC_VECTOR(8 downto 0);   -- ADDRESS INPUT
+        dbus_in    : in  STD_LOGIC_VECTOR(7 downto 0);   -- DATA TO WRITE
+        wr_en      : in  STD_LOGIC;                      -- ENABLE WRITE
+        rd_en      : in  STD_LOGIC;                      -- ENABLE READ
+        dbus_out   : out STD_LOGIC_VECTOR(7 downto 0);   -- TWO-WAY PORT
+        port_io    : inout STD_LOGIC_VECTOR(7 downto 0)  -- DATA READED
     );
 end Port_io;
 
 architecture Behavioral of Port_io is
-    signal port_reg : STD_LOGIC_VECTOR(7 downto 0) := (others => '0'); -- Registrador de dados para saída
-    signal tris_reg : STD_LOGIC_VECTOR(7 downto 0) := (others => '1'); -- Registrador de controle de direção (1 = entrada, 0 = saída)
-    signal latch    : STD_LOGIC_VECTOR(7 downto 0);                    -- Latch para leitura da porta
+    signal port_reg : STD_LOGIC_VECTOR(7 downto 0) := (others => '0'); -- REG DATA OUTPUT
+    signal tris_reg : STD_LOGIC_VECTOR(7 downto 0) := (others => '1'); -- REG DIRECTION CONTROL (1 = in, 0 = out)
+    signal latch    : STD_LOGIC_VECTOR(7 downto 0);                    -- LACTH 
 begin
-    -- Processo para escrita nos registradores port_reg e tris_reg
+    -- WRITE port_reg AND tris_reg
     process(nrst, clk_in)
     begin
         if nrst = '0' then
-            -- Reset assíncrono: Zerar port_reg e configurar tris_reg como entrada
             port_reg <= (others => '0');
             tris_reg <= (others => '1');
         elsif rising_edge(clk_in) then
             if wr_en = '1' then
-                -- Escrita em tris_reg
                 if abus_in = tris_addr or abus_in = alt_tris_addr then
                     tris_reg <= dbus_in;
-                -- Escrita em port_reg
                 elsif abus_in = port_addr or abus_in = alt_port_addr then
                     port_reg <= dbus_in;
                 end if;
@@ -47,7 +44,7 @@ begin
         end if;
     end process;
 
-    -- Leitura combinacional
+    -- READ
     process(rd_en, abus_in, tris_reg, port_reg, port_io)
     begin
         if rd_en = '1' then
@@ -64,7 +61,7 @@ begin
         end if;
     end process;
 
-    -- Configuração da porta bidirecional (Controle Bit a Bit)
+    -- -- TWO-WAY port_io (Bit to Bit)
     gen_port_io: for i in 0 to 7 generate
         port_io(i) <= port_reg(i) when tris_reg(i) = '0' else 'Z';
     end generate gen_port_io;
