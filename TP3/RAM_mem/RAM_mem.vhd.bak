@@ -16,22 +16,22 @@ entity RAM_mem is
 end RAM_mem;
 
 architecture Behavioral of RAM_mem is
-    -- MEMORY TYPE
+    -- Tipo para as memórias
     type memory_array is array(0 to 79) of STD_LOGIC_VECTOR(7 downto 0);
     type memory_array_com is array(0 to 15) of STD_LOGIC_VECTOR(7 downto 0);
     
-    -- MEMORY
+    -- Memórias
     signal mem0 : memory_array := (others => (others => '0'));
     signal mem1 : memory_array := (others => (others => '0'));
     signal mem2 : memory_array := (others => (others => '0'));
     signal mem_com : memory_array_com := (others => (others => '0'));
 
-   
+    -- Alterando addr_index para ser uma variável dentro do processo
     signal addr_index : integer;
 begin
-    -- WRITE
+    -- Processo de escrita
     process(clk_in, nrst)
-    variable addr_index_var : integer;
+    variable addr_index_var : integer; -- Variável para uso dentro do processo
     begin
         if nrst = '0' then
             -- Reset
@@ -41,7 +41,7 @@ begin
             mem_com <= (others => (others => '0'));
         elsif rising_edge(clk_in) then
             if wr_en = '1' then
-                
+                -- Atribuindo a variável addr_index_var com o valor calculado
                 addr_index_var := conv_integer(abus_in(6 downto 0));
                 if abus_in(8 downto 5) = "0000" and addr_index_var < 80 then
                     mem0(addr_index_var) <= dbus_in;
@@ -62,11 +62,11 @@ begin
         end if;
     end process;
 
-    -- READ
+    -- Processo de leitura
     process(rd_en, abus_in)
-    variable addr_index_var : integer; 
+    variable addr_index_var : integer; -- Variável para uso dentro do processo
     begin
-        addr_index_var := conv_integer(abus_in(6 downto 0)); 
+        addr_index_var := conv_integer(abus_in(6 downto 0)); -- Atribuindo para variável
         if rd_en = '1' then
             case abus_in(8 downto 5) is
                 when "0000" => -- mem0: 0x020 - 0x06F
