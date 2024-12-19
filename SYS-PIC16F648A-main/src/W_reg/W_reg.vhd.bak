@@ -1,0 +1,37 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity W_reg is
+    Port (
+        nrst   : in STD_LOGIC;         				-- Entrada de reset assíncrono
+        clk_in : in STD_LOGIC;         				-- Entrada de clock para escrita no registrador
+        d_in   : in STD_LOGIC_VECTOR(7 downto 0); 	-- Entrada de dados para escrita no registrador
+        wr_en  : in STD_LOGIC;         				-- Entrada de habilitação para escrita no registrador
+        w_out  : out STD_LOGIC_VECTOR(7 downto 0) 	-- Saída de dados
+    );
+end W_reg;
+
+architecture Behavioral of W_reg is
+    signal reg_data : STD_LOGIC_VECTOR(7 downto 0) := (others => '0'); -- Registrador de 8 bits
+
+begin
+    process (clk_in, nrst)
+    begin
+        if nrst = '0' then
+            -- Reset assíncrono ativado, zera o registrador
+            reg_data <= (others => '0');
+        elsif rising_edge(clk_in) then
+            -- Verifica a borda de subida do clock
+            if wr_en = '1' then
+                -- Se wr_en está ativo, escreve os dados no registrador
+                reg_data <= d_in;
+            end if;
+        end if;
+    end process;
+
+    -- Saída sempre ativa
+    w_out <= reg_data;
+
+end Behavioral;

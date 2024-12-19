@@ -1,0 +1,6 @@
+
+State Machine - |Control|pres_state
+Name pres_state.fetch_only pres_state.fetch_decod_exec pres_state.rst 
+pres_state.rst 0 0 0 
+pres_state.fetch_decod_exec 0 1 1 
+pres_state.fetch_only 1 0 1 

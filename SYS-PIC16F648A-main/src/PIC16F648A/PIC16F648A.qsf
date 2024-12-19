@@ -1,0 +1,94 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 16:43:23  December 16, 2023
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		PIC16F648A_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone II"
+set_global_assignment -name DEVICE EP2C35F672C6
+set_global_assignment -name TOP_LEVEL_ENTITY PIC16F648A
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:43:23  DECEMBER 16, 2023"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 672
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_AE23 -to porta[0]
+set_location_assignment PIN_AF23 -to porta[1]
+set_location_assignment PIN_AB21 -to porta[2]
+set_location_assignment PIN_AC22 -to porta[3]
+set_location_assignment PIN_AD22 -to porta[4]
+set_location_assignment PIN_AD23 -to porta[5]
+set_location_assignment PIN_AD21 -to porta[6]
+set_location_assignment PIN_AC21 -to porta[7]
+set_location_assignment PIN_G26 -to portb[0]
+set_location_assignment PIN_N23 -to portb[1]
+set_location_assignment PIN_P23 -to portb[2]
+set_location_assignment PIN_T7 -to portb[3]
+set_location_assignment PIN_U3 -to portb[4]
+set_location_assignment PIN_U4 -to portb[5]
+set_location_assignment PIN_V1 -to portb[6]
+set_location_assignment PIN_V2 -to portb[7]
+set_location_assignment PIN_W26 -to nrst
+set_location_assignment PIN_N2 -to clk
+set_global_assignment -name MISC_FILE "C:/Users/1265042/Desktop/Trabalho 4/PIC16F648A/PIC16F648A.dpf"
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name CHECK_OUTPUTS OFF
+set_global_assignment -name SIMULATOR_GENERATE_SIGNAL_ACTIVITY_FILE OFF
+set_global_assignment -name SIMULATOR_GENERATE_POWERPLAY_VCD_FILE OFF
+set_global_assignment -name MIF_FILE teste1.mif
+set_global_assignment -name VHDL_FILE ../Control/Control.vhd
+set_global_assignment -name VHDL_FILE ../W_reg/W_reg.vhd
+set_global_assignment -name VHDL_FILE ../Status_reg/Status_reg.vhd
+set_global_assignment -name VHDL_FILE ../Stack/Stack.vhd
+set_global_assignment -name VHDL_FILE ../RAM_mem/RAM_mem.vhd
+set_global_assignment -name VHDL_FILE ../Port_io/Port_io.vhd
+set_global_assignment -name VHDL_FILE ../PC_reg/PC_reg.vhd
+set_global_assignment -name VHDL_FILE ../FSR_reg/FSR_reg.vhd
+set_global_assignment -name VHDL_FILE ../ALU/ALU.vhd
+set_global_assignment -name VHDL_FILE ../Addr_mux/addr_mux.vhd
+set_global_assignment -name BDF_FILE PIC16F648A.bdf
+set_global_assignment -name BSF_FILE BUSMUX.bsf
+set_global_assignment -name QIP_FILE ROM_mem.qip
+set_global_assignment -name VECTOR_WAVEFORM_FILE PIC16F648A.vwf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

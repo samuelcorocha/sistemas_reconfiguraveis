@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Dec 21 22:23:34 2023
+Quartus II Version : 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+Revision Name : PIC16F648A
+Top-level Entity Name : PIC16F648A
+Family : Cyclone II
+Device : EP2C35F672C6
+Timing Models : Final
+Total logic elements : 3,064 / 33,216 ( 9 % )
+    Total combinational functions : 2,164 / 33,216 ( 7 % )
+    Dedicated logic registers : 2,235 / 33,216 ( 7 % )
+Total registers : 2235
+Total pins : 65 / 475 ( 14 % )
+Total virtual pins : 0
+Total memory bits : 57,344 / 483,840 ( 12 % )
+Embedded Multiplier 9-bit elements : 0 / 70 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

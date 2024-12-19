@@ -1,0 +1,124 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.std_logic_unsigned.all;
+
+------------------------------
+ENTITY ALU IS
+	PORT (
+		 a_in:   	IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 b_in:   	IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 c_in:   	IN STD_LOGIC;
+		 op_sel: 	IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		 bit_sel: 	IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+
+		 r_out:   	OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		 c_out:   	OUT STD_LOGIC;
+		 dc_out:   	OUT STD_LOGIC;
+		 z_out:   	OUT STD_LOGIC
+    );
+END ENTITY;
+------------------------------
+ARCHITECTURE arch OF ALU IS
+	SIGNAL a_temp : 	STD_LOGIC_VECTOR(8 DOWNTO 0); 
+	SIGNAL b_temp : 	STD_LOGIC_VECTOR(8 DOWNTO 0);
+	SIGNAL r_temp : 	STD_LOGIC_VECTOR(8 DOWNTO 0);
+	
+	SIGNAL bs_temp : 	STD_LOGIC_VECTOR(7 DOWNTO 0); 
+	SIGNAL dc_temp : 	STD_LOGIC_VECTOR(4 DOWNTO 0); 
+	SIGNAL z_temp : 	STD_LOGIC;
+	
+	CONSTANT BIT_SEL_0 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+	CONSTANT BIT_SEL_1 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "001";
+	CONSTANT BIT_SEL_2 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "010";
+	CONSTANT BIT_SEL_3 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "011";
+	CONSTANT BIT_SEL_4 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "100";
+	CONSTANT BIT_SEL_5 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "101";
+	CONSTANT BIT_SEL_6 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "110";
+	CONSTANT BIT_SEL_7 : STD_LOGIC_VECTOR(2 DOWNTO 0) := "111";
+	
+	CONSTANT OP_AND : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
+	CONSTANT OP_OR : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0001";
+	CONSTANT OP_XOR : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0010";
+	CONSTANT OP_COM : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0011";
+	CONSTANT OP_INC : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0100";
+	CONSTANT OP_DEC : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0101";
+	CONSTANT OP_ADD : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0110";
+	CONSTANT OP_SUB : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "0111";
+	CONSTANT OP_SWAP : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1000";
+	CONSTANT OP_CLR : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1001";
+	CONSTANT OP_RR : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1010";
+	CONSTANT OP_RL : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1011";
+	CONSTANT OP_BS : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1100";
+	CONSTANT OP_BC : 		STD_LOGIC_VECTOR(3 DOWNTO 0) := "1101";
+	CONSTANT OP_PASS_A : 	STD_LOGIC_VECTOR(3 DOWNTO 0) := "1110";
+	CONSTANT OP_PASS_B : 	STD_LOGIC_VECTOR(3 DOWNTO 0) := "1111";
+
+BEGIN
+	
+	a_temp <= '0' & a_in; 
+	b_temp <= '0' & b_in;
+	
+	WITH bit_sel SELECT 
+		bs_temp <= 
+			"00000001" WHEN BIT_SEL_0, 
+			"00000010" WHEN BIT_SEL_1, 
+			"00000100" WHEN BIT_SEL_2, 
+			"00001000" WHEN BIT_SEL_3, 
+			"00010000" WHEN BIT_SEL_4, 
+			"00100000" WHEN BIT_SEL_5, 
+			"01000000" WHEN BIT_SEL_6, 
+			"10000000" WHEN BIT_SEL_7; 
+			
+	dc_temp <= 
+		('0' & a_temp(3 DOWNTO 0)) + ('0' & b_temp(3 DOWNTO 0)) WHEN op_sel = OP_ADD ELSE 
+		('0' & a_temp(3 DOWNTO 0)) - ('0' & b_temp(3 DOWNTO 0)) WHEN op_sel = OP_SUB ELSE 
+		"00000";
+		
+	WITH op_sel SELECT 
+		r_temp <= 
+			(a_temp AND b_temp) 								WHEN OP_AND, 
+			(a_temp OR b_temp) 									WHEN OP_OR, 
+			(a_temp XOR b_temp) 								WHEN OP_XOR, 
+			('0' & NOT a_in) 									WHEN OP_COM, 
+			(a_temp + 1)										WHEN OP_INC, 
+			(a_temp - 1)										WHEN OP_DEC, 
+			(a_temp + b_temp) 									WHEN OP_ADD, 
+			(a_temp - b_temp)									WHEN OP_SUB,
+			('0' & a_temp(3 DOWNTO 0) & a_temp(7 DOWNTO 4)) 	WHEN OP_SWAP, 
+			("000000000") 										WHEN OP_CLR, 
+			(a_temp(0) & c_in & a_temp(7 DOWNTO 1)) 			WHEN OP_RR, 
+			(a_temp(7) & a_temp(6 DOWNTO 0) & c_in) 			WHEN OP_RL, 
+			('0' & bs_temp OR a_in)								WHEN OP_BS, 
+			('0' & (NOT bs_temp) AND a_in) 						WHEN OP_BC,
+			(a_temp)											WHEN OP_PASS_A, 
+			(b_temp)											WHEN OP_PASS_B,
+			("000000000")										WHEN OTHERS;
+	
+	r_out <= r_temp(7 DOWNTO 0); 
+	
+	c_out <= 
+		NOT r_temp(8) WHEN op_sel = OP_SUB ELSE 
+		r_temp(8); 
+	 
+	dc_out <= 
+		dc_temp(4) WHEN op_sel = OP_ADD ELSE 
+		NOT dc_temp(4) WHEN op_sel = OP_SUB ELSE 
+		'0'; 
+		
+	WITH bit_sel SELECT 
+		z_temp <= 
+			a_in(0) WHEN BIT_SEL_0, 
+			a_in(1) WHEN BIT_SEL_1, 
+			a_in(2) WHEN BIT_SEL_2, 
+			a_in(3) WHEN BIT_SEL_3, 
+			a_in(4) WHEN BIT_SEL_4, 
+			a_in(5) WHEN BIT_SEL_5, 
+			a_in(6) WHEN BIT_SEL_6, 
+			a_in(7) WHEN BIT_SEL_7;
+			
+	z_out <= 
+		z_temp WHEN op_sel = OP_BS OR op_sel = OP_BC ELSE 
+		'1' WHEN r_temp(7 DOWNTO 0) = "00000000" ELSE 
+		'0'; 
+		
+END arch;
